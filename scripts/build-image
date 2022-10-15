@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -e
+
+GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build ./cmd/kv-middleware
+
+docker build . -t asia.gcr.io/tkpd-infra-platform/kv-middleware
+
+docker push asia.gcr.io/tkpd-infra-platform/kv-middleware:latest
